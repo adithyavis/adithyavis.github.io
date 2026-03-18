@@ -20,6 +20,7 @@
     --ink-mid: #2a3f5c;
     --ink-soft: #4a6080;
     --ink-muted: #7a94b0;
+    --gold: #ffd700;
     --white: #f7faff;
     --card-bg: #eef4fc;
     --accent: #1a56c8;
@@ -343,6 +344,13 @@
     line-height: 1.5;
     flex: 1;
   }
+  .project-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    margin-top: 14px;
+  }
   .project-link {
     margin-top: 4px;
     font-family: 'DM Mono', monospace;
@@ -564,6 +572,61 @@
     align-self: center;
   }
 
+  /* ── OSS ── */
+  a.oss-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    gap: 4px 12px;
+    align-items: center;
+    padding: 18px 28px;
+    border-bottom: 1px solid var(--sky-mid);
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+  }
+  a.oss-row:last-child { border-bottom: none; }
+  a.oss-row:hover { background: var(--accent-light); }
+  .oss-title {
+    grid-column: 1;
+    grid-row: 2;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.35;
+  }
+  .oss-github {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid var(--sky-deep);
+    background: var(--white);
+    color: var(--ink-mid);
+    align-self: center;
+  }
+  .oss-stars {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--ink-mid);
+    background: var(--white);
+    border: 1px solid var(--sky-deep);
+    border-radius: 100px;
+    padding: 2px 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .oss-stars .star {
+    color: var(--gold);
+    font-size: 13px;
+  }
+
   /* ── STAGGER ANIMATION ── */
   .stagger { opacity: 0; transform: translateY(18px); animation: fadeUp 0.5s ease forwards; }
   .stagger:nth-child(1) { animation-delay: 0.05s; }
@@ -689,15 +752,60 @@
     </div>
   </div>
 
+  <!-- OPEN SOURCE -->
+  <div class="section-label stagger">Open source</div>
+  <div class="card articles-card stagger">
+    <a class="oss-row" href="https://adithyavis.github.io/reanimated-tab-view/" target="_blank">
+      <div class="article-meta">
+        <span class="article-tag">React Native</span>
+        <span class="oss-stars"><span class="star">&#9733;</span> 89</span>
+      </div>
+      <div class="oss-title">Reanimated Tab View</div>
+      <span class="oss-github"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></span>
+    </a>
+    <a class="oss-row" href="https://github.com/adithyavis/serverless-expo-ota-server" target="_blank">
+      <div class="article-meta">
+        <span class="article-tag">OTA</span>
+        <span class="oss-stars"><span class="star">&#9733;</span> 29</span>
+      </div>
+      <div class="oss-title">Serverless Expo OTA Server</div>
+      <span class="oss-github"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></span>
+    </a>
+    <a class="oss-row" href="https://adithyavis.github.io/awesome-mobile-app-animations/" target="_blank">
+      <div class="article-meta">
+        <span class="article-tag">Animations</span>
+        <span class="oss-stars"><span class="star">&#9733;</span> 6</span>
+      </div>
+      <div class="oss-title">Awesome Mobile App Animations</div>
+      <span class="oss-github"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></span>
+    </a>
+    <a class="oss-row" href="https://github.com/adithyavis/stocks-chart-example" target="_blank">
+      <div class="article-meta">
+        <span class="article-tag">Animations</span>
+        <span class="oss-stars"><span class="star">&#9733;</span> 3</span>
+      </div>
+      <div class="oss-title">Stocks Chart Example</div>
+      <span class="oss-github"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></span>
+    </a>
+    <a class="oss-row" href="https://github.com/adithyavis/react-native-nitro-screen-brightness" target="_blank">
+      <div class="article-meta">
+        <span class="article-tag">Nitro Module</span>
+      </div>
+      <div class="oss-title">RN Nitro Screen Brightness</div>
+      <span class="oss-github"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></span>
+    </a>
+    <a class="oss-row" href="https://github.com/adithyavis/graphql-bff-example" target="_blank">
+      <div class="article-meta">
+        <span class="article-tag">GraphQL</span>
+      </div>
+      <div class="oss-title">GraphQL as BFF</div>
+      <span class="oss-github"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></span>
+    </a>
+  </div>
+
   <!-- PROJECTS -->
-  <div class="section-label stagger">Open source & projects</div>
+  <div class="section-label stagger">Projects</div>
   <div class="projects-grid stagger">
-    <div class="card project-card">
-      <div class="project-icon">⚡</div>
-      <div class="project-name">RN Reanimated Tab View</div>
-      <div class="project-desc">Smooth, slick tab view component for React Native (and web) powered by Reanimated.</div>
-      <a class="project-link" href="https://github.com/adithyavis/react-native-reanimated-tab-view" target="_blank">GitHub ↗</a>
-    </div>
     <div class="card project-card">
       <div class="project-icon">🍽</div>
       <div class="project-name">menuIt</div>
@@ -705,22 +813,13 @@
       <a class="project-link" href="https://youtu.be/NzhAndimcqQ" target="_blank">Demo ↗</a>
     </div>
     <div class="card project-card">
-      <div class="project-icon">📡</div>
-      <div class="project-name">Serverless OTA</div>
-      <div class="project-desc">A serverless Expo OTA update server — self-hosted over-the-air updates for React Native.</div>
-      <a class="project-link" href="https://github.com/adithyavis/serverless-expo-ota-server" target="_blank">GitHub ↗</a>
-    </div>
-    <div class="card project-card">
-      <div class="project-icon">🔗</div>
-      <div class="project-name">GraphQL as BFF</div>
-      <div class="project-desc">Exploration of using GraphQL as a backend-for-frontend layer for mobile apps.</div>
-      <a class="project-link" href="https://www.notion.so/1f74d47b10c64dbb8fe3e964ec9bffc8" target="_blank">Read more ↗</a>
-    </div>
-    <div class="card project-card">
-      <div class="project-icon">🎬</div>
-      <div class="project-name">Awesome Animations</div>
-      <div class="project-desc">Curated collection of mobile app animation patterns and references.</div>
-      <a class="project-link" href="https://github.com/adithyavis/awesome-mobile-app-animations" target="_blank">GitHub ↗</a>
+      <div class="project-icon">📷</div>
+      <div class="project-name">Delhi Camera</div>
+      <div class="project-desc">A camera that lets you see delhi style, with simulated volumetric smog effects</div>
+      <div class="project-links">
+        <a class="pill-link" href="https://delhi-camera.vercel.app" target="_blank">Web ↗</a>
+        <a class="project-link" href="https://github.com/adithyavis/delhi-camera" target="_blank">GitHub ↗</a>
+      </div>
     </div>
   </div>
 
