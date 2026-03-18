@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Adithya Vis — Software Engineer</title>
+<title>Adithya Viswamithiran</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23a8c4ea'/><text x='50' y='50' dominant-baseline='central' text-anchor='middle' font-size='70' font-family='serif'>a</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -237,6 +238,18 @@
     background: var(--accent);
     border-radius: 16px 16px 0 0;
   }
+  .work-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+  .work-logo {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    object-fit: cover;
+  }
   .work-tag {
     font-family: 'DM Mono', monospace;
     font-size: 10px;
@@ -254,7 +267,6 @@
     font-family: 'DM Serif Display', serif;
     font-size: 22px;
     color: var(--ink);
-    margin-bottom: 6px;
     line-height: 1.1;
   }
   .work-role {
@@ -584,10 +596,10 @@
   <!-- HERO -->
   <div class="card card-white hero stagger">
     <div>
-      <div class="hero-eyebrow">Software Engineer · Tech Lead</div>
-      <h1 class="hero-name">Adithya<br><em>Vis</em></h1>
+      <div class="hero-eyebrow">Staff Software Engineer · Founding Engineer</div>
+      <h1 class="hero-name">Adithya<br><em>Viswamithiran</em></h1>
       <p class="hero-desc">
-        I build delightful apps — both web and native. Obsessed with performance, design systems, and the craft of shipping things that feel <em>right</em>.
+        I build delightful apps — both web and mobile. Obsessed with the craft of shipping things that feel <em>right</em>.
       </p>
       <div class="hero-links">
         <a class="hero-link" href="https://github.com/adithyavis" target="_blank">
@@ -629,7 +641,10 @@
   <div class="work-grid stagger">
     <div class="card work-card">
       <div class="work-tag">Current</div>
-      <div class="work-company">levels.fyi</div>
+      <div class="work-header">
+        <img class="work-logo" src="assets/levelsfyi_logo.webp" alt="levels.fyi logo">
+        <div class="work-company">levels.fyi</div>
+      </div>
       <div class="work-role">Software Engineer · Tech Lead</div>
       <div class="work-mau"><span class="mau-dot"></span> 3M+ monthly active users</div>
       <div class="work-links">
@@ -640,7 +655,10 @@
     </div>
     <div class="card work-card">
       <div class="work-tag">Previously</div>
-      <div class="work-company">menu Japan</div>
+      <div class="work-header">
+        <img class="work-logo" src="assets/menu_logo.webp" alt="menu Japan logo">
+        <div class="work-company">menu Japan</div>
+      </div>
       <div class="work-role">Software Engineer</div>
       <div class="work-mau">
         <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#7a94b0" stroke-width="1.5"/></svg>
