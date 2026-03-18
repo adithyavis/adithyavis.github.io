@@ -576,7 +576,7 @@
   a.oss-row {
     display: grid;
     grid-template-columns: 1fr auto;
-    grid-template-rows: auto auto;
+    grid-template-rows: auto auto auto;
     gap: 4px 12px;
     align-items: center;
     padding: 18px 28px;
@@ -595,9 +595,17 @@
     color: var(--ink);
     line-height: 1.35;
   }
+  .oss-desc {
+    grid-column: 1;
+    grid-row: 3;
+    font-size: 12px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    margin-top: 2px;
+  }
   .oss-github {
     grid-column: 2;
-    grid-row: 1 / 3;
+    grid-row: 1 / 4;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -708,7 +716,7 @@
         <img class="work-logo" src="assets/levelsfyi_logo.webp" alt="levels.fyi logo">
         <div class="work-company">levels.fyi</div>
       </div>
-      <div class="work-role">Software Engineer · Tech Lead</div>
+      <div class="work-role">Staff Software Engineer · Founding engineer</div>
       <div class="work-mau"><span class="mau-dot"></span> 3M+ monthly active users</div>
       <div class="work-links">
         <a class="pill-link" href="https://apps.apple.com/us/app/levels-fyi-salaries-more/id1587020991" target="_blank">iOS ↗</a>
@@ -722,7 +730,7 @@
         <img class="work-logo" src="assets/menu_logo.webp" alt="menu Japan logo">
         <div class="work-company">menu Japan</div>
       </div>
-      <div class="work-role">Software Engineer</div>
+      <div class="work-role">Senior/Lead Software Engineer</div>
       <div class="work-mau">
         <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#7a94b0" stroke-width="1.5"/></svg>
         1M+ monthly active users
@@ -761,6 +769,7 @@
         <span class="oss-stars"><span class="star">&#9733;</span> 89</span>
       </div>
       <div class="oss-title">Reanimated Tab View</div>
+      <div class="oss-desc">A performant tab view for React Native powered by Reanimated</div>
       <span class="oss-github"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></span>
     </a>
     <a class="oss-row" href="https://github.com/adithyavis/serverless-expo-ota-server" target="_blank">
@@ -769,6 +778,7 @@
         <span class="oss-stars"><span class="star">&#9733;</span> 29</span>
       </div>
       <div class="oss-title">Serverless Expo OTA Server</div>
+      <div class="oss-desc">Serverless implementation of the expo ota server</div>
       <span class="oss-github"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></span>
     </a>
     <a class="oss-row" href="https://adithyavis.github.io/awesome-mobile-app-animations/" target="_blank">
@@ -777,6 +787,7 @@
         <span class="oss-stars"><span class="star">&#9733;</span> 6</span>
       </div>
       <div class="oss-title">Awesome Mobile App Animations</div>
+      <div class="oss-desc">&#10024; A collection of animations from popular apps like youtube. Built using react native &#10024;</div>
       <span class="oss-github"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></span>
     </a>
     <a class="oss-row" href="https://github.com/adithyavis/stocks-chart-example" target="_blank">
@@ -785,6 +796,7 @@
         <span class="oss-stars"><span class="star">&#9733;</span> 3</span>
       </div>
       <div class="oss-title">Stocks Chart Example</div>
+      <div class="oss-desc">Stocks chart functionality built with react-native-skia</div>
       <span class="oss-github"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></span>
     </a>
     <a class="oss-row" href="https://github.com/adithyavis/react-native-nitro-screen-brightness" target="_blank">
@@ -792,6 +804,7 @@
         <span class="article-tag">Nitro Module</span>
       </div>
       <div class="oss-title">RN Nitro Screen Brightness</div>
+      <div class="oss-desc">Nitro module for controlling screen brightness</div>
       <span class="oss-github"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></span>
     </a>
     <a class="oss-row" href="https://github.com/adithyavis/graphql-bff-example" target="_blank">
@@ -799,6 +812,7 @@
         <span class="article-tag">GraphQL</span>
       </div>
       <div class="oss-title">GraphQL as BFF</div>
+      <div class="oss-desc">An example of how to use graphql as a bff</div>
       <span class="oss-github"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></span>
     </a>
   </div>
