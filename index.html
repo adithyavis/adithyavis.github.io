@@ -573,7 +573,7 @@
   }
 
   /* ── OSS ── */
-  a.oss-row {
+  .oss-row {
     display: grid;
     grid-template-columns: 1fr auto;
     grid-template-rows: auto auto auto;
@@ -581,12 +581,21 @@
     align-items: center;
     padding: 18px 28px;
     border-bottom: 1px solid var(--sky-mid);
+    position: relative;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .oss-row:last-child { border-bottom: none; }
+  .oss-row:hover { background: var(--accent-light); }
+  .oss-link {
     text-decoration: none;
     color: inherit;
-    cursor: pointer;
   }
-  a.oss-row:last-child { border-bottom: none; }
-  a.oss-row:hover { background: var(--accent-light); }
+  .oss-link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
   .oss-title {
     grid-column: 1;
     grid-row: 2;
@@ -616,7 +625,11 @@
     background: var(--white);
     color: var(--ink-mid);
     align-self: center;
+    position: relative;
+    z-index: 1;
+    text-decoration: none;
   }
+  .oss-github:hover { border-color: var(--accent); color: var(--accent); }
   .oss-stars {
     font-family: 'DM Mono', monospace;
     font-size: 11px;
