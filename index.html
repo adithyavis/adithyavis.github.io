@@ -275,6 +275,11 @@
     color: var(--ink-soft);
     margin-bottom: 10px;
   }
+  .work-mau-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
   .work-mau {
     font-family: 'DM Mono', monospace;
     font-size: 12px;
@@ -762,8 +767,10 @@
         <div class="work-company">levels.fyi</div>
       </div>
       <div class="work-role">Staff Software Engineer · Founding Engineer</div>
-      <div class="work-mau"><span class="mau-dot"></span> 3M+ monthly active users</div>
-      <div class="work-mau"><span class="mau-dot"></span> 4.8&#9733; on the App Store and the Google Play Store</div>
+      <div class="work-mau-container">
+        <div class="work-mau"><span class="mau-dot"></span> 3M+ monthly active users</div>
+        <div class="work-mau"><span class="mau-dot"></span> 4.8&#9733; on the App Store and the Google Play Store</div>
+      </div>
       <div class="work-links">
         <a class="pill-link" href="https://apps.apple.com/us/app/levels-fyi-salaries-more/id1587020991" target="_blank">iOS ↗</a>
         <a class="pill-link" href="https://play.google.com/store/apps/details?id=com.levels.mobile" target="_blank">Android ↗</a>
@@ -777,9 +784,11 @@
         <div class="work-company">menu Japan</div>
       </div>
       <div class="work-role">Senior/Lead Software Engineer</div>
-      <div class="work-mau">
-        <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#7a94b0" stroke-width="1.5"/></svg>
-        1M+ monthly active users
+      <div class="work-mau-container">
+        <div class="work-mau">
+          <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#7a94b0" stroke-width="1.5"/></svg>
+          1M+ monthly active users
+        </div>
       </div>
       <div class="work-links">
         <a class="pill-link" href="https://apps.apple.com/jp/app/menu/id1443466646" target="_blank">iOS ↗</a>
