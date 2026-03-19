@@ -451,7 +451,6 @@
   .contact-card:hover {
     box-shadow: 8px 10px 0 #0a1525;
   }
-  .contact-left { }
   .contact-heading {
     font-family: 'DM Serif Display', serif;
     font-size: 28px;
@@ -479,7 +478,29 @@
     transition: background 0.15s;
     white-space: nowrap;
   }
-  .contact-email:hover { background: rgba(255,255,255,0.18); }
+  .contact-email:hover { background: rgba(255,255,255,0.18); cursor: pointer; }
+  .toast {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--ink);
+    background: var(--white);
+    border: 1.5px solid var(--sky-mid);
+    border-radius: 100px;
+    padding: 10px 20px;
+    box-shadow: var(--shadow-hard);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s, transform 0.25s;
+    z-index: 100;
+  }
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
 
   /* ── SKILLS ROW ── */
   .skills-row {
@@ -918,12 +939,22 @@
       <div class="contact-heading">Let's work together</div>
       <div class="contact-sub">Open to interesting projects, collaborations, and conversations about startups, remote work, founding engineering teams, mobile engineering, etc.</div>
     </div>
-    <a class="contact-email" href="mailto:adithyaviswam@gmail.com">
+    <button class="contact-email" onclick="copyEmail()">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
-      adithyaviswam@gmail.com
-    </a>
+    </button>
   </div>
 </div>
+
+<div class="toast" id="toast">Email copied to clipboard!</div>
+
+<script>
+function copyEmail() {
+  navigator.clipboard.writeText('adithyaviswam@gmail.com');
+  var t = document.getElementById('toast');
+  t.classList.add('show');
+  setTimeout(function() { t.classList.remove('show'); }, 2000);
+}
+</script>
 
 </body>
 </html>
