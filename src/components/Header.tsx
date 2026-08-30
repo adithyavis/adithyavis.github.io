@@ -6,7 +6,7 @@ export function Header() {
     <header className="header">
       <div className="header-bar glass glass--nav">
         <a className="header-brand" href="#top">
-          <span className="header-mark" aria-hidden="true" />
+          <img className="header-mark" src="/assets/favicon.svg" alt="" />
           {profile.name}
         </a>
         <nav className="header-nav">

@@ -27,12 +27,12 @@
   letter-spacing: -0.01em;
 }
 
+/* The artwork is /assets/favicon.svg — the same file the browser tab uses, so
+   the header chip and the favicon can never drift apart. The gradient, corner
+   radius and lit top edge all live in the SVG rather than here. */
 .header-mark {
   width: 20px;
   height: 20px;
-  border-radius: 7px;
-  background: linear-gradient(150deg, #ffffff, #9b90ff 60%, #5d4fe0);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
   display: block;
   flex-shrink: 0;
 }

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Adithya Viswamithiran">
+  <defs>
+    <!-- Same 150deg violet ramp as .header-mark, so the tab icon and the header brand chip read as one object. -->
+    <linearGradient id="tile" gradientUnits="userSpaceOnUse" x1="10.15" y1="-5.85" x2="53.85" y2="69.85">
+      <stop offset="0" stop-color="#8b7ffa"/>
+      <stop offset="0.5" stop-color="#6355e8"/>
+      <stop offset="1" stop-color="#3d31b5"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="21" fill="url(#tile)"/>
+  <!-- The lit top edge borrowed from .glass. -->
+  <rect x="0.75" y="0.75" width="62.5" height="62.5" rx="20.25" fill="none" stroke="#ffffff" stroke-opacity="0.22" stroke-width="1.5"/>
+  <g fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M15.5 20L26.5 32L15.5 44" stroke-width="8.5"/>
+    <path d="M35 44.25H49" stroke-width="8"/>
+  </g>
+</svg>
