@@ -23,28 +23,3 @@ export function LinkedInIcon({ size = 24 }: IconProps) {
     </svg>
   )
 }
-
-export function MailIcon({ size = 16 }: IconProps) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
-      <rect x="2" y="4" width="20" height="16" rx="2" />
-      <path d="m2 7 10 7 10-7" />
-    </svg>
-  )
-}
-
-export function HollowDotIcon({ size = 10 }: IconProps) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 12 12" fill="none" aria-hidden="true">
-      <circle cx="6" cy="6" r="5" stroke="#7a94b0" strokeWidth="1.5" />
-    </svg>
-  )
-}
-
-export const socialIcons = {
-  github: GitHubIcon,
-  twitter: TwitterIcon,
-  linkedin: LinkedInIcon,
-} as const
-
-export type SocialIconName = keyof typeof socialIcons

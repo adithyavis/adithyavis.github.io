@@ -1,31 +1,35 @@
-import { Articles } from './components/Articles'
+import { Apps } from './components/Apps'
+import { Background } from './components/Background'
 import { Contact } from './components/Contact'
 import { Experience } from './components/Experience'
+import { Focus } from './components/Focus'
+import { Footer } from './components/Footer'
+import { Header } from './components/Header'
 import { Hero } from './components/Hero'
 import { OpenSource } from './components/OpenSource'
-import { Projects } from './components/Projects'
-import { Skills } from './components/Skills'
-import { Talks } from './components/Talk'
-import { Toast } from './components/Toast'
-import { useToast } from './hooks/useToast'
+import { Talks } from './components/Talks'
+import { Writing } from './components/Writing'
+import { useReveal } from './hooks/useReveal'
+import './App.css'
 
 export function App() {
-  const { message, show } = useToast()
+  useReveal('.reveal')
 
   return (
-    <>
-      {/* Sections render as flat siblings of .page — the stagger animation keys off nth-child. */}
-      <div className="page">
+    <div className="page">
+      <Background />
+      <div className="page-content">
+        <Header />
         <Hero />
-        <Skills />
+        <Focus />
         <Experience />
-        <Talks />
         <OpenSource />
-        <Projects />
-        <Articles />
-        <Contact onCopied={show} />
+        <Apps />
+        <Talks />
+        <Writing />
+        <Contact />
+        <Footer />
       </div>
-      <Toast message={message} />
-    </>
+    </div>
   )
 }

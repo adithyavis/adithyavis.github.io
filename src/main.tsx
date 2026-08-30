@@ -1,8 +1,8 @@
-// Global styles load first so component stylesheets can override the shared
-// .card / .section-label base rules at equal specificity.
+// Tokens and shared surfaces load first so component stylesheets can build on
+// them at equal specificity.
 import './styles/base.css'
-import './styles/pill-link.css'
-import './styles/list-card.css'
+import './styles/glass.css'
+import './styles/layout.css'
 
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'

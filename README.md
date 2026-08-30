@@ -18,17 +18,27 @@ the site says, edit these and nothing else:
 
 | File | Section |
 | --- | --- |
-| `profile.ts` | Name, eyebrow, social links, MAU badge, email |
-| `skills.ts` | Technical focus chips |
+| `profile.ts` | Name, email, hero intro, social links, nav items, technical-focus chips |
 | `experience.ts` | Experience cards |
+| `openSource.ts` | Open source repos, with the `tags` / `langs` the filter derives its facets from |
+| `apps.ts` | Apps |
 | `talks.ts` | Talks |
-| `openSource.ts` | Open source list (incl. star counts) |
-| `projects.ts` | Project cards |
-| `articles.ts` | Writing list |
-| `contact.ts` | Contact copy |
+| `writing.ts` | Writing list |
+
+The open-source filter builds its tag and language chips from the repo entries
+themselves, so adding a repo with a new tag adds that facet automatically.
 
 Images go in [`public/assets/`](public/assets/) and are referenced by absolute path
-(e.g. `/assets/logo.webp`).
+(e.g. `/assets/levelsfyi_logo.webp`).
+
+## Structure
+
+- [`src/styles/`](src/styles/) — `base.css` holds the design tokens and the responsive
+  column tracks; `glass.css` holds the frosted-surface recipe every card is built from;
+  `layout.css` holds the section shell and scroll-reveal.
+- [`src/components/`](src/components/) — one component per section, each with its own
+  co-located CSS.
+- [`src/hooks/`](src/hooks/) — scroll reveal, clipboard copy, popover dismissal.
 
 ## Deployment
 

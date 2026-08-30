@@ -1,0 +1,16 @@
+.focus-label {
+  margin-bottom: 18px;
+}
+
+.focus-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.focus-chip {
+  font-size: 13.5px;
+  color: var(--text-body);
+  padding: 8px 15px;
+  border-radius: 999px;
+}

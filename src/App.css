@@ -1,0 +1,12 @@
+.page {
+  min-height: 100vh;
+  background: var(--bg);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Lifts all content above the animated background layer. */
+.page-content {
+  position: relative;
+  z-index: 1;
+}

@@ -1,58 +1,65 @@
-export type OpenSourceProject = {
-  tag: string
-  title: string
-  description: string
+export type Repo = {
+  name: string
   href: string
-  stars?: number
-  image?: { src: string; alt: string; width: number }
+  blurb: string
+  /** Empty string renders no star count, matching the design. */
+  stars: string
+  tags: string[]
+  langs: string[]
 }
 
-export const openSource: OpenSourceProject[] = [
+export const repos: Repo[] = [
   {
-    tag: 'React Native',
-    title: 'Reanimated Tab View',
-    description:
-      'A performant tab view for React Native powered by Reanimated. 200K+ monthly downloads at peak.',
+    name: 'Reanimated Tab View',
+    stars: '★ 97',
     href: 'https://adithyavis.github.io/reanimated-tab-view/',
-    stars: 97,
-    image: {
-      src: '/assets/rtv_weekly_downloads.png',
-      alt: 'Reanimated Tab View weekly downloads',
-      width: 150,
-    },
+    blurb:
+      'A performant tab view for React Native powered by Reanimated. 200K+ monthly downloads at peak.',
+    tags: ['React Native', 'Animations'],
+    langs: ['TypeScript'],
   },
   {
-    tag: 'OTA',
-    title: 'Serverless Expo OTA Server',
-    description: 'Serverless implementation of the expo ota server',
+    name: 'Serverless Expo OTA Server',
+    stars: '★ 39',
     href: 'https://github.com/adithyavis/serverless-expo-ota-server',
-    stars: 39,
+    blurb: 'Serverless implementation of the Expo OTA server.',
+    tags: ['OTA', 'Infra'],
+    langs: ['TypeScript'],
   },
   {
-    tag: 'Animations',
-    title: 'Awesome Mobile App Animations',
-    description:
-      '✨ A collection of animations from popular apps like youtube. Built using react native ✨',
+    name: 'Awesome Mobile App Animations',
+    stars: '★ 39',
     href: 'https://adithyavis.github.io/awesome-mobile-app-animations/',
-    stars: 39,
+    blurb: 'A collection of animations from popular apps, rebuilt in React Native.',
+    tags: ['React Native', 'Animations'],
+    langs: ['TypeScript', 'JavaScript'],
   },
   {
-    tag: 'Animations',
-    title: 'Stocks Chart Example',
-    description: 'Stocks chart functionality built with react-native-skia',
+    name: 'Stocks Chart Example',
+    stars: '★ 3',
     href: 'https://github.com/adithyavis/stocks-chart-example',
-    stars: 3,
+    blurb: 'Stocks chart functionality built with react-native-skia.',
+    tags: ['Animations', 'React Native'],
+    langs: ['TypeScript'],
   },
   {
-    tag: 'Nitro Module',
-    title: 'RN Nitro Screen Brightness',
-    description: 'Nitro module for controlling screen brightness',
+    name: 'RN Nitro Screen Brightness',
+    stars: '',
     href: 'https://github.com/adithyavis/react-native-nitro-screen-brightness',
+    blurb: 'Nitro module for controlling screen brightness.',
+    tags: ['Native module', 'React Native'],
+    langs: ['Swift', 'Kotlin', 'TypeScript'],
   },
   {
-    tag: 'GraphQL',
-    title: 'GraphQL as BFF',
-    description: 'An example of how to use graphql as a bff',
+    name: 'GraphQL as BFF',
+    stars: '',
     href: 'https://github.com/adithyavis/graphql-bff-example',
+    blurb: 'An example of how to use GraphQL as a backend-for-frontend.',
+    tags: ['GraphQL', 'Infra'],
+    langs: ['TypeScript'],
   },
 ]
+
+/** Facet values in first-appearance order, matching the design's derivation. */
+export const allTags = [...new Set(repos.flatMap((repo) => repo.tags))]
+export const allLangs = [...new Set(repos.flatMap((repo) => repo.langs))]

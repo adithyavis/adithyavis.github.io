@@ -1,0 +1,33 @@
+.writing-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.writing-row {
+  display: grid;
+  grid-template-columns: var(--writing-cols);
+  align-items: baseline;
+  gap: clamp(4px, 1.6vw, 20px);
+  padding: 17px clamp(8px, 1.6vw, 16px);
+  border-bottom: 1px solid var(--rule-faint);
+  border-radius: 14px;
+  transition: background 180ms var(--ease);
+}
+.writing-row:hover { background: rgba(255, 255, 255, 0.07); }
+
+.writing-date {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.writing-title {
+  font-size: 16px;
+  color: var(--text);
+  letter-spacing: -0.015em;
+}
+
+.writing-source {
+  font-size: 12px;
+  color: var(--text-dim);
+}
