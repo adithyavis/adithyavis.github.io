@@ -1,9 +1,48 @@
-.oss-filter-row {
+/* Filter button, its popover, and the selected-facet pills. Wraps so a long
+   selection pushes onto further lines rather than overflowing. */
+.oss-controls {
   position: relative;
   display: flex;
-  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
   margin-bottom: 16px;
 }
+
+/* Selected facets, shown beside the button; clicking one removes it. */
+.oss-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12.5px;
+  padding: 7px 11px 7px 13px;
+  border-radius: 999px;
+  border: 1px solid rgba(176, 166, 255, 0.6);
+  background: rgba(var(--violet), 0.28);
+  color: #eae7ff;
+  transition: border-color 180ms var(--ease), background 180ms var(--ease);
+}
+.oss-pill:hover {
+  border-color: rgba(176, 166, 255, 0.9);
+  background: rgba(var(--violet), 0.4);
+}
+
+.oss-pill-x {
+  font-size: 14px;
+  line-height: 1;
+  opacity: 0.7;
+}
+.oss-pill:hover .oss-pill-x { opacity: 1; }
+
+.oss-clear-all {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  padding: 4px 6px;
+  transition: color 180ms var(--ease);
+}
+.oss-clear-all:hover { color: var(--text); }
 
 .oss-filter-button {
   display: flex;

@@ -8,6 +8,8 @@ import './OpenSource.css'
 /** Collapsing is only offered once the list outgrows this many rows. */
 const COLLAPSE_THRESHOLD = 3
 
+type Facet = 'tag' | 'lang'
+
 const toggle = (values: string[], value: string) =>
   values.includes(value) ? values.filter((v) => v !== value) : [...values, value]
 
@@ -17,9 +19,21 @@ export function OpenSource() {
   const [activeTags, setActiveTags] = useState<string[]>([])
   const [activeLangs, setActiveLangs] = useState<string[]>([])
 
-  const sectionRef = useRef<HTMLElement>(null)
+  // Dismissal is scoped to the whole control cluster, not just the popover, so
+  // that removing a pill while the popover is open does not also close it.
+  const controlsRef = useRef<HTMLDivElement>(null)
   const closeFilter = useCallback(() => setFilterOpen(false), [])
-  useDismissable(filterOpen, sectionRef, closeFilter)
+  useDismissable(filterOpen, controlsRef, closeFilter)
+
+  const toggleFacet = useCallback((facet: Facet, value: string) => {
+    const setValues = facet === 'tag' ? setActiveTags : setActiveLangs
+    setValues((values) => toggle(values, value))
+  }, [])
+
+  const clearAll = useCallback(() => {
+    setActiveTags([])
+    setActiveLangs([])
+  }, [])
 
   // A repo matches if it carries any selected tag AND any selected language;
   // an empty facet means "no constraint".
@@ -33,14 +47,21 @@ export function OpenSource() {
     [activeTags, activeLangs],
   )
 
-  const selectedCount = activeTags.length + activeLangs.length
+  const selected = useMemo(
+    () => [
+      ...activeTags.map((value) => ({ facet: 'tag' as const, value })),
+      ...activeLangs.map((value) => ({ facet: 'lang' as const, value })),
+    ],
+    [activeTags, activeLangs],
+  )
+
   const collapsible = visible.length > COLLAPSE_THRESHOLD
 
   return (
-    <section className="shell section reveal" id="open-source" ref={sectionRef}>
+    <section className="shell section reveal" id="open-source">
       <SectionHeading title="Open source" gap="22px" />
 
-      <div className="oss-filter-row">
+      <div className="oss-controls" ref={controlsRef}>
         <button
           type="button"
           className="oss-filter-button glass glass--cyan lift lift--bright"
@@ -52,22 +73,37 @@ export function OpenSource() {
             <span />
             <span />
           </span>
-          {selectedCount ? `Filter · ${selectedCount}` : 'Filter'}
+          {selected.length ? `Filter · ${selected.length}` : 'Filter'}
         </button>
 
+        {selected.map(({ facet, value }) => (
+          <button
+            type="button"
+            className="oss-pill"
+            key={`${facet}:${value}`}
+            onClick={() => toggleFacet(facet, value)}
+            aria-label={`Remove ${value} filter`}
+          >
+            {value}
+            <span className="oss-pill-x" aria-hidden="true">
+              ×
+            </span>
+          </button>
+        ))}
+
+        {selected.length > 1 && (
+          <button type="button" className="oss-clear-all" onClick={clearAll}>
+            Clear all
+          </button>
+        )}
+
+        {/* Sits below the whole cluster, so wrapped pill rows are never covered. */}
         {filterOpen && (
           <div className="oss-panel glass glass--raised">
             <div className="oss-panel-head">
               <span className="oss-panel-label">Filter by tag</span>
               <span className="oss-panel-actions">
-                <button
-                  type="button"
-                  className="oss-clear"
-                  onClick={() => {
-                    setActiveTags([])
-                    setActiveLangs([])
-                  }}
-                >
+                <button type="button" className="oss-clear" onClick={clearAll}>
                   Clear
                 </button>
                 <button
@@ -88,7 +124,7 @@ export function OpenSource() {
                   className="oss-chip"
                   key={tag}
                   aria-pressed={activeTags.includes(tag)}
-                  onClick={() => setActiveTags((tags) => toggle(tags, tag))}
+                  onClick={() => toggleFacet('tag', tag)}
                 >
                   {tag}
                 </button>
@@ -105,7 +141,7 @@ export function OpenSource() {
                   className="oss-chip"
                   key={lang}
                   aria-pressed={activeLangs.includes(lang)}
-                  onClick={() => setActiveLangs((langs) => toggle(langs, lang))}
+                  onClick={() => toggleFacet('lang', lang)}
                 >
                   {lang}
                 </button>
