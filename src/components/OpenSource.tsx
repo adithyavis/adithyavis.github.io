@@ -1,6 +1,7 @@
 import { useCallback, useMemo, useRef, useState } from 'react'
-import { allLangs, allTags, repos, stars } from '../data/openSource'
+import { allLangs, allTags, repos } from '../data/openSource'
 import { useDismissable } from '../hooks/useDismissable'
+import { useLiveStars } from '../hooks/useLiveStars'
 import { Collapsible } from './Collapsible'
 import { SectionHeading } from './SectionHeading'
 import './OpenSource.css'
@@ -10,16 +11,16 @@ const COLLAPSE_THRESHOLD = 3
 
 type Facet = 'tag' | 'lang'
 
-/** Repos with no stars yet show nothing, matching the design. */
-const starLabel = (slug: string) => {
-  const count = stars[slug] ?? 0
-  return count > 0 ? `★ ${count}` : ''
-}
-
 const toggle = (values: string[], value: string) =>
   values.includes(value) ? values.filter((v) => v !== value) : [...values, value]
 
 export function OpenSource() {
+  const stars = useLiveStars()
+  const starLabel = (slug: string) => {
+    const count = stars[slug] ?? 0
+    return count > 0 ? `★ ${count}` : ''
+  }
+
   const [expanded, setExpanded] = useState(false)
   const [filterOpen, setFilterOpen] = useState(false)
   const [activeTags, setActiveTags] = useState<string[]>([])
