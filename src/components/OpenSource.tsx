@@ -1,5 +1,5 @@
 import { useCallback, useMemo, useRef, useState } from 'react'
-import { allLangs, allTags, repos } from '../data/openSource'
+import { allLangs, allTags, repos, stars } from '../data/openSource'
 import { useDismissable } from '../hooks/useDismissable'
 import { Collapsible } from './Collapsible'
 import { SectionHeading } from './SectionHeading'
@@ -9,6 +9,12 @@ import './OpenSource.css'
 const COLLAPSE_THRESHOLD = 3
 
 type Facet = 'tag' | 'lang'
+
+/** Repos with no stars yet show nothing, matching the design. */
+const starLabel = (slug: string) => {
+  const count = stars[slug] ?? 0
+  return count > 0 ? `★ ${count}` : ''
+}
 
 const toggle = (values: string[], value: string) =>
   values.includes(value) ? values.filter((v) => v !== value) : [...values, value]
@@ -172,7 +178,7 @@ export function OpenSource() {
               >
                 <span className="oss-name">{repo.name}</span>
                 <span className="oss-blurb">{repo.blurb}</span>
-                <span className="oss-stars">{repo.stars}</span>
+                <span className="oss-stars">{starLabel(repo.repo)}</span>
               </a>
             ))}
           </div>

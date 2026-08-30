@@ -21,12 +21,39 @@ the site says, edit these and nothing else:
 | `profile.ts` | Name, email, hero intro, social links, nav items, technical-focus chips |
 | `experience.ts` | Experience cards |
 | `openSource.ts` | Open source repos, with the `tags` / `langs` the filter derives its facets from |
+| `stars.json` | Star counts — generated, see below; do not hand-edit |
 | `apps.ts` | Apps |
 | `talks.ts` | Talks |
 | `writing.ts` | Writing list |
 
 The open-source filter builds its tag and language chips from the repo entries
 themselves, so adding a repo with a new tag adds that facet automatically.
+
+### GitHub star counts
+
+Each repo entry carries a `repo: 'owner/name'` slug.
+[`scripts/fetch-stars.mjs`](scripts/fetch-stars.mjs) resolves those slugs against the
+GitHub API and writes [`src/data/stars.json`](src/data/stars.json), which the build
+inlines — visitors make **no** API calls, and counts render with the first paint.
+A repo with zero stars renders no count.
+
+The workflow runs the script on every deploy and on a **daily schedule**, so counts
+stay current without a push. It writes into the build workspace only; **nothing is
+committed back to the repository.** The checked-in `stars.json` is just a seed so a
+local `npm run build` works offline, and it will drift from the live numbers — that is
+expected, and no reason to update it by hand.
+
+To refresh it locally (optional):
+
+```sh
+node scripts/fetch-stars.mjs           # 60 req/hour unauthenticated
+GITHUB_TOKEN=ghp_… node scripts/fetch-stars.mjs   # 5,000 req/hour
+```
+
+If the API call fails, the script keeps the previous count for that repo and exits
+successfully, so an API blip degrades to slightly stale numbers rather than a failed
+deploy. Note that GitHub disables scheduled workflows after 60 days without repository
+activity; a push or a manual run re-enables them.
 
 Images go in [`public/assets/`](public/assets/) and are referenced by absolute path
 (e.g. `/assets/levelsfyi_logo.webp`).
