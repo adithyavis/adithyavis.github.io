@@ -9,7 +9,7 @@ export function Experience() {
 
   return (
     <section className="shell section reveal" id="work">
-      <SectionHeading title="Experience" />
+      <SectionHeading title="Work" />
       <Collapsible
         expanded={expanded}
         onToggle={() => setExpanded((open) => !open)}
