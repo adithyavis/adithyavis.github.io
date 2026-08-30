@@ -4,7 +4,6 @@ export type Repo = {
   name: string
   href: string
   blurb: string
-  /** owner/name on GitHub — the key the star count is looked up by. */
   repo: string
   tags: string[]
   langs: string[]
@@ -87,11 +86,6 @@ export const repos: Repo[] = [
   },
 ]
 
-/**
- * Star counts, refreshed from the GitHub API at build time by
- * scripts/fetch-stars.mjs. The committed values are a seed for local builds;
- * every deploy overwrites them with live numbers.
- */
 export const stars: Record<string, number> = starCounts
 
 /** Facet values in first-appearance order, matching the design's derivation. */
