@@ -64,6 +64,9 @@
 }
 
 .contact-linkedin {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
   font-size: 14.5px;
   padding: 12px 22px;
   border-radius: 999px;

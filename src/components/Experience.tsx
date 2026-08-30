@@ -1,8 +1,15 @@
-import { useState } from 'react'
-import { experience } from '../data/experience'
+import { useState, type ComponentType } from 'react'
+import { experience, type LinkIcon } from '../data/experience'
+import { AppStoreIcon, GooglePlayIcon, SafariIcon } from './icons'
 import { Collapsible } from './Collapsible'
 import { SectionHeading } from './SectionHeading'
 import './Experience.css'
+
+const LINK_ICONS: Record<LinkIcon, ComponentType<{ size?: number }>> = {
+  appStore: AppStoreIcon,
+  googlePlay: GooglePlayIcon,
+  safari: SafariIcon,
+}
 
 export function Experience() {
   const [expanded, setExpanded] = useState(false)
@@ -34,17 +41,22 @@ export function Experience() {
                   ))}
                 </ul>
                 <div className="work-links">
-                  {job.links.map((link) => (
-                    <a
-                      className="work-link lift lift--bright"
-                      key={link.label}
-                      href={link.href}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      {link.label}
-                    </a>
-                  ))}
+                  {job.links.map((link) => {
+                    const Icon = LINK_ICONS[link.icon]
+                    return (
+                      <a
+                        className="work-link lift lift--bright"
+                        key={link.label}
+                        href={link.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`${job.company} on ${link.label}`}
+                        title={link.label}
+                      >
+                        <Icon size={16} />
+                      </a>
+                    )
+                  })}
                 </div>
               </div>
             </article>

@@ -40,6 +40,9 @@
 }
 
 .talk-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-size: 13px;
   color: var(--text-bright);
   padding-top: 4px;

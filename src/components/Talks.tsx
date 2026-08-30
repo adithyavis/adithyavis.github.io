@@ -1,4 +1,5 @@
 import { talks } from '../data/talks'
+import { YouTubeIcon } from './icons'
 import { SectionHeading } from './SectionHeading'
 import './Talks.css'
 
@@ -21,7 +22,10 @@ export function Talks() {
           <span className="talk-body">
             <span className="talk-title">{talk.title}</span>
             <span className="talk-blurb">{talk.blurb}</span>
-            <span className="talk-cta">▶ Watch on YouTube</span>
+            <span className="talk-cta">
+              <YouTubeIcon size={15} />
+              Watch on YouTube
+            </span>
           </span>
         </a>
       ))}

@@ -1,6 +1,13 @@
-import { apps } from '../data/apps'
+import type { ComponentType } from 'react'
+import { apps, type AppIcon } from '../data/apps'
+import { SafariIcon, YouTubeIcon } from './icons'
 import { SectionHeading } from './SectionHeading'
 import './Apps.css'
+
+const CTA_ICONS: Record<AppIcon, ComponentType<{ size?: number }>> = {
+  youTube: YouTubeIcon,
+  safari: SafariIcon,
+}
 
 export function Apps() {
   return (
@@ -20,7 +27,13 @@ export function Apps() {
             </span>
             <span className="app-name">{app.name}</span>
             <span className="app-blurb">{app.blurb}</span>
-            <span className="app-cta">{app.cta}</span>
+            <span className="app-cta">
+              {(() => {
+                const Icon = CTA_ICONS[app.ctaIcon]
+                return <Icon size={14} />
+              })()}
+              {app.cta}
+            </span>
           </a>
         ))}
       </div>

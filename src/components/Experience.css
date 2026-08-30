@@ -84,9 +84,11 @@
 }
 
 .work-link {
-  font-size: 13px;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
   color: var(--text-body);
-  padding: 7px 14px;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.15);
   background: rgba(255, 255, 255, 0.06);
