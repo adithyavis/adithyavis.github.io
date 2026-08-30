@@ -1,11 +1,10 @@
 import { profile } from '../data/profile'
-import { GitHubIcon, LinkedInIcon, TwitterIcon } from './icons'
+import { GitHubIcon, TwitterIcon } from './icons'
 import './Hero.css'
 
 const SOCIALS = [
   { label: 'GitHub', href: profile.github, Icon: GitHubIcon },
   { label: 'Twitter', href: profile.twitter, Icon: TwitterIcon },
-  { label: 'LinkedIn', href: profile.linkedin, Icon: LinkedInIcon },
 ]
 
 export function Hero() {

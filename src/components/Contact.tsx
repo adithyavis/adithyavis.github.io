@@ -19,14 +19,6 @@ export function Contact() {
           <button type="button" className="contact-copy" onClick={copy}>
             {label}
           </button>
-          <a
-            className="contact-linkedin"
-            href={profile.linkedin}
-            target="_blank"
-            rel="noreferrer"
-          >
-            LinkedIn
-          </a>
         </div>
       </div>
     </section>

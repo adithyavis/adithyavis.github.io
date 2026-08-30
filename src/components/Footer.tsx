@@ -4,7 +4,6 @@ import './Footer.css'
 const LINKS = [
   { label: 'GitHub', href: profile.github },
   { label: 'Twitter', href: profile.twitter },
-  { label: 'LinkedIn', href: profile.linkedin },
 ]
 
 export function Footer() {
