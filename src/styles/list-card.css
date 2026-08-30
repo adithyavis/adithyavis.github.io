@@ -1,0 +1,31 @@
+/* Shared shell + row metadata for the stacked link lists
+   (open source and writing). */
+.articles-card {
+  margin-bottom: 32px;
+  overflow: hidden;
+  padding: 0;
+}
+.article-meta {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.article-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  background: var(--accent-light);
+  border-radius: 6px;
+  padding: 2px 7px;
+  border: 1px solid var(--accent-light);
+}
+.article-date {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-muted);
+}

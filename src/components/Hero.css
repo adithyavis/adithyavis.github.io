@@ -1,0 +1,134 @@
+.hero {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: start;
+  margin-bottom: 32px;
+  padding: 40px 44px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -30px;
+  right: -20px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 30px solid var(--accent-light);
+  opacity: 0.5;
+}
+.hero-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.hero-eyebrow::before {
+  content: '';
+  width: 24px;
+  height: 1.5px;
+  background: var(--accent);
+  display: inline-block;
+}
+.hero-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 52px;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+.hero-name em {
+  font-style: italic;
+  color: var(--accent);
+}
+.hero-desc {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  max-width: 400px;
+  margin-bottom: 28px;
+}
+.hero-links {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.hero-link {
+  font-size: 12px;
+  font-weight: 500;
+  font-family: 'DM Mono', monospace;
+  color: var(--ink);
+  text-decoration: none;
+  background: var(--white);
+  border: 1.5px solid var(--sky-deep);
+  border-radius: 100px;
+  padding: 6px 14px;
+  box-shadow: var(--shadow-hard-sm);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.hero-link:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 5px 0 var(--shadow-color);
+}
+.hero-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  background: var(--accent);
+  color: white;
+  border-radius: 14px;
+  border: 1.5px solid #1042a0;
+  box-shadow: var(--shadow-hard);
+  padding: 24px 20px;
+  min-width: 130px;
+  flex-shrink: 0;
+}
+.badge-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 36px;
+  line-height: 1;
+  color: white;
+}
+.badge-label {
+  font-size: 10px;
+  font-family: 'DM Mono', monospace;
+  color: rgba(255,255,255,0.75);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 4px;
+}
+.badge-sub {
+  font-size: 13px;
+  color: rgba(255,255,255,0.85);
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+@media (max-width: 640px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-name { font-size: 36px; }
+  .hero-badge {
+    flex-direction: row;
+    min-width: unset;
+    width: 100%;
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 16px 20px;
+  }
+}

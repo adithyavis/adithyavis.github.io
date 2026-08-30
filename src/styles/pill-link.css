@@ -1,0 +1,17 @@
+/* Shared small outline link used by experience cards and project cards. */
+.pill-link {
+  font-size: 11px;
+  font-family: 'DM Mono', monospace;
+  color: var(--ink-mid);
+  text-decoration: none;
+  border: 1px solid var(--sky-deep);
+  border-radius: 100px;
+  padding: 4px 10px;
+  background: var(--white);
+  transition: all 0.15s;
+}
+.pill-link:hover {
+  background: var(--accent-light);
+  color: var(--accent);
+  border-color: var(--accent);
+}
