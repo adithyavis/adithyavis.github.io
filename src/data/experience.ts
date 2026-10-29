@@ -11,7 +11,7 @@ export type Job = {
 
 export const experience: Job[] = [
   {
-    period: '2024–NOW',
+    period: '2024 — now',
     company: 'levels.fyi',
     logo: '/assets/levelsfyi_logo.webp',
     role: 'Staff Software Engineer · Founding Engineer',
@@ -25,7 +25,7 @@ export const experience: Job[] = [
     ],
   },
   {
-    period: '2022–2024',
+    period: '2022 — 2024',
     company: 'menu Japan',
     logo: '/assets/menu_logo.webp',
     role: 'Senior / Lead Software Engineer',
@@ -36,7 +36,7 @@ export const experience: Job[] = [
     ],
   },
   {
-    period: '2022–2024',
+    period: '2022 — 2024',
     company: 'makro pro',
     logo: '/assets/makro-pro-logo.svg',
     role: 'Freelance Software Engineer',
@@ -46,7 +46,7 @@ export const experience: Job[] = [
     ]
   },
   {
-    period: '2019–2022',
+    period: '2019 — 2022',
     company: 'Konica Minolta',
     logo: '/assets/konica-minolta-logo.png',
     role: 'Senior Software Engineer',
@@ -56,7 +56,7 @@ export const experience: Job[] = [
     ],
   },
   {
-    period: '2018–2019',
+    period: '2018 — 2019',
     company: 'Quantiphi',
     logo: '/assets/quantiphi_logo.jpeg',
     role: 'Platform Engineer',

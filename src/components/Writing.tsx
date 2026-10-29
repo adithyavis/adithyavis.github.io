@@ -5,7 +5,7 @@ import './Writing.css'
 export function Writing() {
   return (
     <section className="shell section reveal" id="writing">
-      <SectionHeading title="Writing" gap="10px" />
+      <SectionHeading title="Writing" />
       <div className="writing-list">
         {writing.map((post) => (
           <a
@@ -17,7 +17,7 @@ export function Writing() {
           >
             <span className="writing-date">{post.date}</span>
             <span className="writing-title">{post.title}</span>
-            <span className="writing-source">{post.source}</span>
+            {post.source && <span className="writing-source">{post.source}</span>}
           </a>
         ))}
       </div>
