@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://adithyavis.github.io/sitemap.xml
