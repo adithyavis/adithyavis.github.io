@@ -1,4 +1,4 @@
-export type AppIcon = 'youTube' | 'safari'
+export type AppIcon = 'youTube' | 'web'
 
 export type App = {
   name: string
@@ -20,7 +20,7 @@ export const apps: App[] = [
     name: 'Delhi Camera',
     blurb: 'A camera that lets you see Delhi style, with simulated volumetric smog effects.',
     cta: 'Open',
-    ctaIcon: 'safari',
+    ctaIcon: 'web',
     href: 'https://delhi-camera.vercel.app',
   },
 ]

@@ -1,4 +1,4 @@
-export type LinkIcon = 'appStore' | 'googlePlay' | 'safari'
+export type LinkIcon = 'appStore' | 'googlePlay' | 'web'
 
 export type Job = {
   period: string
@@ -21,7 +21,7 @@ export const experience: Job[] = [
     links: [
       { label: 'iOS', icon: 'appStore', href: 'https://apps.apple.com/us/app/levels-fyi-salaries-more/id1587020991' },
       { label: 'Android', icon: 'googlePlay', href: 'https://play.google.com/store/apps/details?id=com.levels.mobile' },
-      { label: 'Web', icon: 'safari', href: 'https://levels.fyi' },
+      { label: 'Web', icon: 'web', href: 'https://levels.fyi' },
     ],
   },
   {
@@ -42,7 +42,7 @@ export const experience: Job[] = [
     role: 'Freelance Software Engineer',
     points: ['Biggest B2B ecommerce app in Thailand.'],
     links: [
-      { label: 'Web', icon: 'safari', href: 'https://www.makro.pro/en' },
+      { label: 'Web', icon: 'web', href: 'https://www.makro.pro/en' },
     ]
   },
   {
@@ -52,7 +52,7 @@ export const experience: Job[] = [
     role: 'Senior Software Engineer',
     points: ['Founding engineer, tomoLinks.'],
     links: [
-      { label: 'Web', icon: 'safari', href: 'https://tomolinks.konicaminolta.jp/' },
+      { label: 'Web', icon: 'web', href: 'https://tomolinks.konicaminolta.jp/' },
     ],
   },
   {
@@ -62,7 +62,7 @@ export const experience: Job[] = [
     role: 'Platform Engineer',
     points: [],
     links: [
-      { label: 'Web', icon: 'safari', href: 'https://quantiphi.com/' },
+      { label: 'Web', icon: 'web', href: 'https://quantiphi.com/' },
     ],
   },
 ]

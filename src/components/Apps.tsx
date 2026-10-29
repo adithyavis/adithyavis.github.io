@@ -1,12 +1,12 @@
 import type { ComponentType } from 'react'
 import { apps, type AppIcon } from '../data/apps'
-import { SafariIcon, YouTubeIcon } from './icons'
+import { GlobeIcon, YouTubeIcon } from './icons'
 import { SectionHeading } from './SectionHeading'
 import './Apps.css'
 
 const CTA_ICONS: Record<AppIcon, ComponentType<{ size?: number }>> = {
   youTube: YouTubeIcon,
-  safari: SafariIcon,
+  web: GlobeIcon,
 }
 
 export function Apps() {

@@ -1,13 +1,13 @@
 import type { ComponentType } from 'react'
 import { experience, type LinkIcon } from '../data/experience'
-import { AppStoreIcon, GooglePlayIcon, SafariIcon } from './icons'
+import { AppStoreIcon, GooglePlayIcon, GlobeIcon } from './icons'
 import { SectionHeading } from './SectionHeading'
 import './Experience.css'
 
 const LINK_ICONS: Record<LinkIcon, ComponentType<{ size?: number }>> = {
   appStore: AppStoreIcon,
   googlePlay: GooglePlayIcon,
-  safari: SafariIcon,
+  web: GlobeIcon,
 }
 
 export function Experience() {
