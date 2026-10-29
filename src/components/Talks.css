@@ -1,3 +1,9 @@
+.talks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
 .talk-card {
   display: grid;
   grid-template-columns: var(--meta-cols);
