@@ -1,13 +1,20 @@
+import type { ReactNode } from 'react'
+
 type SectionHeadingProps = {
   title: string
-  /** Space between the rule and the section body; sections vary. */
-  gap?: string
+  subtitle?: string
+  /** Controls aligned to the right of the title, such as a filter. */
+  children?: ReactNode
 }
 
-export function SectionHeading({ title, gap }: SectionHeadingProps) {
+export function SectionHeading({ title, subtitle, children }: SectionHeadingProps) {
   return (
-    <div className="section-head" style={gap ? { ['--section-head-gap' as string]: gap } : undefined}>
-      <h2 className="section-title">{title}</h2>
+    <div className="section-head">
+      <div>
+        <h2 className="section-title">{title}</h2>
+        {subtitle && <p className="section-subtitle">{subtitle}</p>}
+      </div>
+      {children}
     </div>
   )
 }

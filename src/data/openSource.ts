@@ -1,7 +1,7 @@
+import forkCounts from './forks.json'
 import starCounts from './stars.json'
 
 export type Repo = {
-  name: string
   href: string
   blurb: string
   repo: string
@@ -11,7 +11,6 @@ export type Repo = {
 
 export const repos: Repo[] = [
   {
-    name: 'React Native Canvas Kit',
     repo: 'adithyavis/react-native-canvas-kit',
     href: 'https://github.com/adithyavis/react-native-canvas-kit/',
     blurb:
@@ -20,7 +19,6 @@ export const repos: Repo[] = [
     langs: ['TypeScript'],
   },
   {
-    name: 'Reanimated Tab View',
     repo: 'adithyavis/reanimated-tab-view',
     href: 'https://adithyavis.github.io/reanimated-tab-view/',
     blurb:
@@ -29,7 +27,6 @@ export const repos: Repo[] = [
     langs: ['TypeScript'],
   },
   {
-    name: 'Awesome Mobile App Animations',
     repo: 'adithyavis/awesome-mobile-app-animations',
     href: 'https://adithyavis.github.io/awesome-mobile-app-animations/',
     blurb: 'A collection of animations from popular apps, rebuilt in React Native.',
@@ -37,7 +34,6 @@ export const repos: Repo[] = [
     langs: ['TypeScript', 'JavaScript'],
   },
   {
-    name: 'Serverless Expo OTA Server',
     repo: 'adithyavis/serverless-expo-ota-server',
     href: 'https://github.com/adithyavis/serverless-expo-ota-server',
     blurb: 'Serverless implementation of the Expo OTA server.',
@@ -45,7 +41,6 @@ export const repos: Repo[] = [
     langs: ['TypeScript'],
   },
   {
-    name: 'coderaven',
     repo: 'adithyavis/coderaven',
     href: 'https://github.com/adithyavis/coderaven',
     blurb: 'Run git-syncable code reviews on top of claude code locally 🚀.',
@@ -53,7 +48,6 @@ export const repos: Repo[] = [
     langs: ['TypeScript'],
   },
   {
-    name: 'Stocks Chart Example',
     repo: 'adithyavis/stocks-chart-example',
     href: 'https://github.com/adithyavis/stocks-chart-example',
     blurb: 'Stocks chart functionality built with react-native-skia.',
@@ -61,7 +55,6 @@ export const repos: Repo[] = [
     langs: ['TypeScript'],
   },
   {
-    name: 'ecrecover-cloudflare',
     repo: 'adithyavis/ecrecover-cloudflare',
     href: 'https://github.com/adithyavis/ecrecover-cloudflare',
     blurb: 'A Cloudflare Worker that runs secp256k1 ecrecover in Rust, built for Sign-In With Ethereum, EIP-712 orders, and transaction senders.',
@@ -69,7 +62,6 @@ export const repos: Repo[] = [
     langs: ['Rust'],
   },
   {
-    name: 'RN Nitro Screen Brightness',
     repo: 'adithyavis/react-native-nitro-screen-brightness',
     href: 'https://github.com/adithyavis/react-native-nitro-screen-brightness',
     blurb: 'Nitro module for controlling screen brightness.',
@@ -77,7 +69,6 @@ export const repos: Repo[] = [
     langs: ['Swift', 'Kotlin', 'TypeScript'],
   },
   {
-    name: 'GraphQL as BFF',
     repo: 'adithyavis/graphql-bff-example',
     href: 'https://github.com/adithyavis/graphql-bff-example',
     blurb: 'An example of how to use GraphQL as a backend-for-frontend.',
@@ -86,8 +77,21 @@ export const repos: Repo[] = [
   },
 ]
 
+/** Build-time counts, refreshed in CI by scripts/fetch-repo-stats.mjs. */
 export const stars: Record<string, number> = starCounts
+export const forks: Record<string, number> = forkCounts
 
-/** Facet values in first-appearance order, matching the design's derivation. */
+/** The bare repository name, shown as the card title the way GitHub does. */
+export const repoSlug = (repo: Repo) => repo.repo.split('/')[1]
+
+/** Filter values in first-appearance order. */
 export const allTags = [...new Set(repos.flatMap((repo) => repo.tags))]
-export const allLangs = [...new Set(repos.flatMap((repo) => repo.langs))]
+
+/**
+ * Total stars across the listed repos, rounded down to the nearest ten so the
+ * "+" stays true as counts drift between builds.
+ */
+export function starTotalLabel(counts: Record<string, number>) {
+  const total = repos.reduce((sum, repo) => sum + (counts[repo.repo] ?? 0), 0)
+  return total < 10 ? String(total) : `${Math.floor(total / 10) * 10}+`
+}

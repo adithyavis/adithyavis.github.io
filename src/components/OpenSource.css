@@ -1,211 +1,111 @@
-/* Filter button, its popover, and the selected-facet pills. Wraps so a long
-   selection pushes onto further lines rather than overflowing. */
-.oss-controls {
-  position: relative;
+/* Segmented control: one option active at a time. */
+.oss-filter {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 16px;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
 }
 
-/* Selected facets, shown beside the button; clicking one removes it. */
-.oss-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  font-size: 12.5px;
-  padding: 7px 11px 7px 13px;
+.oss-filter-option {
+  min-height: 36px;
+  padding: 0 14px;
+  border: 0;
   border-radius: 999px;
-  border: 1px solid rgba(176, 166, 255, 0.6);
-  background: rgba(var(--violet), 0.28);
-  color: #eae7ff;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 500;
+  transition: background 180ms var(--ease), color 180ms var(--ease);
+}
+.oss-filter-option:hover { color: var(--text); }
+.oss-filter-option[aria-pressed='true'] {
+  background: var(--surface-active);
+  color: var(--text);
+}
+
+/* Three across on desktop, two on tablets, one on phones. */
+.oss-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+  gap: 12px;
+}
+
+/* Modelled on GitHub's pinned-repo card: outline only, repo name in link blue,
+   a Public badge, the description, then language, stars and forks. */
+.oss-card {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 18px;
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
   transition: border-color 180ms var(--ease), background 180ms var(--ease);
 }
-.oss-pill:hover {
-  border-color: rgba(176, 166, 255, 0.9);
-  background: rgba(var(--violet), 0.4);
-}
+.oss-card:hover { border-color: var(--text-faint); background: var(--surface); }
 
-.oss-pill-x {
-  font-size: 14px;
-  line-height: 1;
-  opacity: 0.7;
-}
-.oss-pill:hover .oss-pill-x { opacity: 1; }
-
-.oss-clear-all {
-  font-size: 12.5px;
-  color: var(--text-muted);
-  background: none;
-  border: none;
-  padding: 4px 6px;
-  transition: color 180ms var(--ease);
-}
-.oss-clear-all:hover { color: var(--text); }
-
-.oss-filter-button {
+.oss-card-head {
   display: flex;
   align-items: center;
-  gap: 9px;
-  font-size: 13px;
-  color: var(--text-bright);
-  padding: 9px 16px;
-  border-radius: 999px;
+  gap: 8px;
+  min-width: 0;
 }
 
-/* Three stacked rules, narrowing downward — the design's filter glyph. */
-.oss-filter-glyph {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-.oss-filter-glyph span {
-  display: block;
-  height: 1.5px;
-  background: currentColor;
-}
-.oss-filter-glyph span:nth-child(1) { width: 12px; }
-.oss-filter-glyph span:nth-child(2) { width: 8px; }
-.oss-filter-glyph span:nth-child(3) { width: 4px; }
-
-.oss-panel {
-  position: absolute;
-  top: calc(100% + 10px);
-  left: 0;
-  z-index: 30;
-  width: min(320px, calc(100vw - 2 * var(--pad)));
-  padding: 18px;
-  border-radius: 20px;
-  animation: fadeup 160ms ease-out;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.6),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.16),
-    inset 0 0 28px rgba(255, 255, 255, 0.08),
-    0 28px 70px -20px rgba(0, 0, 0, 0.9);
-}
-
-.oss-panel-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 14px;
-}
-
-.oss-panel-label {
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-}
-
-.oss-panel-actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.oss-clear {
-  font-size: 12.5px;
-  color: var(--text-muted);
-  background: none;
-  border: none;
-  padding: 0;
-}
-.oss-clear:hover { color: var(--text); }
-
-.oss-close {
+.oss-repo-icon {
   display: grid;
-  place-items: center;
-  width: 22px;
-  height: 22px;
-  font-size: 14px;
-  line-height: 1;
+  flex-shrink: 0;
   color: var(--text-muted);
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background: rgba(255, 255, 255, 0.06);
-  padding: 0;
-}
-.oss-close:hover { color: var(--text); border-color: rgba(255, 255, 255, 0.4); }
-
-.oss-facet {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-}
-
-.oss-panel-rule {
-  height: 1px;
-  background: rgba(255, 255, 255, 0.12);
-  margin: 16px 0 14px;
-}
-
-.oss-panel-sublabel {
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-  margin-bottom: 12px;
-}
-
-.oss-chip {
-  font-size: 12.5px;
-  padding: 7px 12px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--text-body);
-  transition: border-color 180ms var(--ease), background 180ms var(--ease), color 180ms var(--ease);
-}
-.oss-chip[aria-pressed='true'] {
-  border-color: rgba(176, 166, 255, 0.6);
-  background: rgba(var(--violet), 0.28);
-  color: #eae7ff;
-}
-
-.oss-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  position: relative;
-}
-
-.oss-row {
-  display: grid;
-  grid-template-columns: var(--repo-cols);
-  align-items: baseline;
-  gap: clamp(8px, 2vw, 28px);
-  padding: clamp(18px, 2.6vw, 24px) clamp(18px, 2.6vw, 26px);
-  border-radius: 20px;
 }
 
 .oss-name {
-  font-size: 16.5px;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 15px;
+  font-weight: 600;
+  color: #4493f8;
+}
+.oss-card:hover .oss-name { text-decoration: underline; text-underline-offset: 3px; }
+
+.oss-badge {
+  flex-shrink: 0;
+  padding: 0 7px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  font-size: 11px;
   font-weight: 500;
-  letter-spacing: -0.02em;
+  line-height: 18px;
+  color: var(--text-muted);
 }
 
 .oss-blurb {
-  font-size: 14px;
-  color: var(--text-muted);
+  margin: 8px 0 14px;
+  font-size: 13.5px;
   line-height: 1.5;
+  color: var(--text-muted);
 }
 
-.oss-stars {
+/* Pinned to the bottom so the stat rows line up across a grid row. */
+.oss-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 16px;
+  margin-top: auto;
   font-size: 12.5px;
-  color: var(--text-dim);
-  white-space: nowrap;
+  color: var(--text-muted);
 }
 
-.oss-empty {
-  padding: 40px;
-  text-align: center;
-  font-size: 14px;
-  color: var(--text-dim);
-  border: 1px dashed rgba(255, 255, 255, 0.14);
-  border-radius: 20px;
+.oss-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.oss-language-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
 }

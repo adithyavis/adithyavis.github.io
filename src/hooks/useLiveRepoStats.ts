@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react'
-import { repos, stars as buildTimeStars } from '../data/openSource'
+import { forks as buildTimeForks, repos, stars as buildTimeStars } from '../data/openSource'
 
-const CACHE_KEY = 'gh-stars-v1'
+const CACHE_KEY = 'gh-repo-stats-v1'
 const MAX_AGE_MS = 6 * 60 * 60 * 1000
 
-type Cached = { at: number; stars: Record<string, number> }
+type Counts = Record<string, number>
+export type RepoStats = { stars: Counts; forks: Counts }
+
+type Cached = RepoStats & { at: number }
 
 function readCache(): Cached | null {
   try {
@@ -15,7 +18,8 @@ function readCache(): Cached | null {
       typeof parsed !== 'object' ||
       parsed === null ||
       typeof (parsed as Cached).at !== 'number' ||
-      typeof (parsed as Cached).stars !== 'object'
+      typeof (parsed as Cached).stars !== 'object' ||
+      typeof (parsed as Cached).forks !== 'object'
     ) {
       return null
     }
@@ -25,8 +29,8 @@ function readCache(): Cached | null {
   }
 }
 
-export function useLiveStars(): Record<string, number> {
-  const [live, setLive] = useState<Record<string, number>>(() => readCache()?.stars ?? {})
+export function useLiveRepoStats(): RepoStats {
+  const [live, setLive] = useState<RepoStats | null>(() => readCache())
 
   useEffect(() => {
     const cached = readCache()
@@ -47,18 +51,20 @@ export function useLiveStars(): Record<string, number> {
     )
       .then((pages) => {
         if (cancelled) return
-        const next: Record<string, number> = {}
+        const next: RepoStats = { stars: {}, forks: {} }
         for (const page of pages) {
           if (!Array.isArray(page)) continue
           for (const entry of page) {
-            const { full_name: fullName, stargazers_count: count } = entry ?? {}
-            if (typeof fullName === 'string' && typeof count === 'number') next[fullName] = count
+            const { full_name: fullName, stargazers_count: starCount, forks_count: forkCount } = entry ?? {}
+            if (typeof fullName !== 'string') continue
+            if (typeof starCount === 'number') next.stars[fullName] = starCount
+            if (typeof forkCount === 'number') next.forks[fullName] = forkCount
           }
         }
-        if (Object.keys(next).length === 0) return
+        if (Object.keys(next.stars).length === 0) return
         setLive(next)
         try {
-          localStorage.setItem(CACHE_KEY, JSON.stringify({ at: Date.now(), stars: next }))
+          localStorage.setItem(CACHE_KEY, JSON.stringify({ at: Date.now(), ...next }))
         } catch {
         }
       })
@@ -70,5 +76,8 @@ export function useLiveStars(): Record<string, number> {
     }
   }, [])
 
-  return { ...buildTimeStars, ...live }
+  return {
+    stars: { ...buildTimeStars, ...live?.stars },
+    forks: { ...buildTimeForks, ...live?.forks },
+  }
 }
