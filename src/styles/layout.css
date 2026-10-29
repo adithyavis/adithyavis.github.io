@@ -73,17 +73,19 @@ a.tile:hover { border-color: var(--line-strong); }
 .button--primary:hover { background: #ffffff; border-color: #ffffff; }
 
 /* Sections start hidden and fade up as they scroll into view; the reveal hook
-   adds .is-visible. Never applied to the hero, which must paint immediately. */
-.reveal {
+   adds .is-visible. Never applied to the hero, which must paint immediately.
+   Scoped to .js (set by an inline script in index.html) so the prerendered
+   page stays fully visible when JavaScript doesn't run. */
+.js .reveal {
   opacity: 0;
   transform: translateY(16px);
   transition: opacity 700ms var(--ease), transform 700ms var(--ease);
 }
-.reveal.is-visible {
+.js .reveal.is-visible {
   opacity: 1;
   transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1; transform: none; }
+  .js .reveal { opacity: 1; transform: none; }
 }

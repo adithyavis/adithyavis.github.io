@@ -30,10 +30,13 @@ function readCache(): Cached | null {
 }
 
 export function useLiveRepoStats(): RepoStats {
-  const [live, setLive] = useState<RepoStats | null>(() => readCache())
+  // Starts from the build-time counts, never the cache: the first render must
+  // match the prerendered HTML, so the cache is only applied after mount.
+  const [live, setLive] = useState<RepoStats | null>(null)
 
   useEffect(() => {
     const cached = readCache()
+    if (cached) setLive(cached)
     if (cached && Date.now() - cached.at < MAX_AGE_MS) return
 
     let cancelled = false

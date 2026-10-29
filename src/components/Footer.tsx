@@ -9,7 +9,9 @@ const LINKS = [
 export function Footer() {
   return (
     <footer className="shell footer">
-      <span>
+      {/* The year is baked in at build time; the daily rebuild keeps it current,
+          so a visitor's clock disagreeing for a few hours is expected. */}
+      <span suppressHydrationWarning>
         © {new Date().getFullYear()} {profile.name}
       </span>
       <span className="footer-links">
