@@ -23,7 +23,7 @@ function copyViaSelection(text: string) {
  * Copies the address and flips the button label for two seconds. If both copy
  * paths fail, the label shows the address instead of claiming success.
  */
-export function useCopyEmail(email: string) {
+export function useCopyEmail(email: string, idleLabel = 'Copy email') {
   const [state, setState] = useState<'idle' | 'copied' | 'failed'>('idle')
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
@@ -45,6 +45,6 @@ export function useCopyEmail(email: string) {
     if (timeoutRef.current) clearTimeout(timeoutRef.current)
   }, [])
 
-  const label = state === 'copied' ? 'Email copied ✓' : state === 'failed' ? email : 'Copy email'
+  const label = state === 'copied' ? 'Email copied ✓' : state === 'failed' ? email : idleLabel
   return { label, copy }
 }
