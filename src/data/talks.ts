@@ -4,6 +4,8 @@ export type Talk = {
   title: string
   blurb: string
   href: string
+  /** YouTube video id, plus the offset in seconds when the talk sits inside a longer stream. */
+  video: { id: string; start?: number }
 }
 
 export const talks: Talk[] = [
@@ -14,6 +16,7 @@ export const talks: Talk[] = [
     blurb:
       'Talk at the React India × Chennai React meetup, on building smooth, gesture-driven animations in React Native.',
     href: 'https://www.youtube.com/live/7dc6tJOG_Yo',
+    video: { id: '7dc6tJOG_Yo' },
   },
   {
     year: '2022',
@@ -22,5 +25,6 @@ export const talks: Talk[] = [
     blurb:
       "Session talk at Japan's premier React Native conference, on building a configurable framework for feature flags on mobile clients.",
     href: 'https://www.youtube.com/live/H8meRaHfxaU?t=4853',
+    video: { id: 'H8meRaHfxaU', start: 4853 },
   },
 ]

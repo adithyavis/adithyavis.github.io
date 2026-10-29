@@ -1,38 +1,27 @@
 .header {
-  position: fixed;
-  top: 16px;
-  left: 0;
-  right: 0;
-  z-index: 50;
-  padding: 0 var(--pad);
-}
-
-.header-bar {
-  max-width: var(--shell);
-  margin: 0 auto;
-  padding: 8px 10px 8px 16px;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
-  border-radius: 999px;
+  gap: 12px 24px;
+  padding-top: 20px;
+  padding-bottom: 28px;
 }
 
 .header-brand {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 15px;
+  font-weight: 600;
   letter-spacing: -0.01em;
 }
 
 /* The artwork is /assets/favicon.svg — the same file the browser tab uses, so
-   the header chip and the favicon can never drift apart. The gradient, corner
-   radius and lit top edge all live in the SVG rather than here. */
+   the header chip and the favicon can never drift apart. */
 .header-mark {
-  width: 20px;
-  height: 20px;
+  width: 28px;
+  height: 28px;
   display: block;
   flex-shrink: 0;
 }
@@ -40,28 +29,33 @@
 .header-nav {
   display: flex;
   align-items: center;
-  gap: clamp(12px, 2vw, 24px);
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  font-size: 14px;
 }
 
-/* Collapses to just the CTA below 900px via the --nav-links token. */
 .header-link {
-  display: var(--nav-links);
-  font-size: 13.5px;
-  color: var(--text-bright);
-  transition: color 180ms var(--ease);
+  padding: 10px 14px;
+  border-radius: 999px;
+  color: var(--text-secondary);
+  transition: color 180ms var(--ease), background 180ms var(--ease);
 }
-.header-link:hover { color: var(--text); }
+.header-link:hover { color: var(--text); background: var(--surface-active); }
 
 .header-cta {
-  font-size: 13.5px;
-  font-weight: 500;
-  padding: 8px 16px;
+  padding: 10px 16px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.94);
+  background: var(--text);
   color: var(--bg);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.8),
-    0 6px 18px -8px rgba(0, 0, 0, 0.9);
+  font-weight: 500;
   transition: background 180ms var(--ease);
 }
 .header-cta:hover { background: #ffffff; color: var(--bg); }
+
+/* On phones the pill keeps only the call to action. */
+@media (max-width: 560px) {
+  .header-link { display: none; }
+}

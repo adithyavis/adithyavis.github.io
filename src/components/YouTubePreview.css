@@ -1,0 +1,43 @@
+/* Shared by the thumbnail button and the player iframe that replaces it, so
+   the swap doesn't shift the layout. */
+.yt-preview {
+  display: block;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  padding: 0;
+  border: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #000000;
+}
+
+button.yt-preview { cursor: pointer; }
+button.yt-preview:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* hqdefault is 4:3 with letterbox bars baked in; cover crops them away. */
+.yt-preview-thumb {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 400ms var(--ease);
+}
+.yt-preview:hover .yt-preview-thumb { transform: scale(1.03); }
+
+.yt-preview-play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 48px;
+  height: 48px;
+  margin: -24px 0 0 -24px;
+  padding-left: 2px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(10, 10, 11, 0.72);
+  color: #ffffff;
+  transition: background 180ms var(--ease);
+}
+.yt-preview:hover .yt-preview-play { background: #ff0033; }
