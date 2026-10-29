@@ -1,7 +1,6 @@
 // Tokens and shared surfaces load first so component stylesheets can build on
 // them at equal specificity.
 import './styles/base.css'
-import './styles/glass.css'
 import './styles/layout.css'
 
 import { StrictMode } from 'react'

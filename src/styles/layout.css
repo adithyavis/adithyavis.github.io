@@ -1,46 +1,76 @@
 .shell {
-  max-width: var(--shell);
+  max-width: calc(var(--shell) + 2 * var(--pad));
   margin: 0 auto;
   padding-inline: var(--pad);
 }
 
 .section {
-  padding-bottom: clamp(54px, 8vw, 96px);
-  scroll-margin-top: 96px;
+  padding-top: clamp(72px, 9vw, 112px);
+  scroll-margin-top: 24px;
 }
 
-/* Heading rule above each section's content. The gap below it varies by
-   section, so callers set --section-head-gap. */
+/* Title on the left, optional controls on the right; wraps on narrow screens. */
 .section-head {
   display: flex;
-  align-items: baseline;
+  flex-wrap: wrap;
+  align-items: flex-end;
   justify-content: space-between;
-  gap: 24px;
-  padding-bottom: 22px;
-  border-bottom: 1px solid var(--rule);
-  margin-bottom: var(--section-head-gap, 34px);
+  gap: 16px 24px;
+  margin-bottom: 24px;
 }
 
 .section-title {
   margin: 0;
-  font-size: clamp(24px, 3.6vw, 32px);
+  font-size: clamp(28px, 3.4vw, 40px);
   letter-spacing: -0.035em;
   font-weight: 500;
 }
 
-.eyebrow {
-  font-family: var(--font-mono);
-  font-size: 11.5px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--violet-label);
+.section-subtitle {
+  margin: 8px 0 0;
+  font-size: 15px;
+  color: var(--text-muted);
 }
 
-.serif-accent {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 400;
+/* The one raised surface the design uses: hero tiles, cards and the work list. */
+.tile {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 24px;
 }
+a.tile { transition: border-color 180ms var(--ease); }
+a.tile:hover { border-color: var(--line-strong); }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 46px;
+  padding: 0 20px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: transparent;
+  color: var(--text);
+  font-size: 15px;
+  transition: border-color 180ms var(--ease), background 180ms var(--ease);
+}
+.button:hover { border-color: var(--text-faint); }
+
+.button--primary {
+  border-color: var(--text);
+  background: var(--text);
+  color: var(--bg);
+  font-weight: 500;
+}
+.button--primary:hover { background: #ffffff; border-color: #ffffff; }
 
 /* Sections start hidden and fade up as they scroll into view; the reveal hook
    adds .is-visible. Never applied to the hero, which must paint immediately. */
