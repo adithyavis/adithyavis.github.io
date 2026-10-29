@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
-  # Rebuild daily so the GitHub star counts stay current without a push.
+  # Rebuild daily so the GitHub star and fork counts stay current without a push.
   schedule:
     - cron: '0 6 * * *'
   workflow_dispatch:
@@ -32,10 +32,10 @@ jobs:
 
       - run: npm ci
 
-      # Writes live star counts into src/data/stars.json for this build only —
-      # nothing is committed back to the repository.
-      - name: Refresh GitHub star counts
-        run: node scripts/fetch-stars.mjs
+      # Writes live star and fork counts into src/data/stars.json and forks.json
+      # for this build only — nothing is committed back to the repository.
+      - name: Refresh GitHub star and fork counts
+        run: node scripts/fetch-repo-stats.mjs
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
