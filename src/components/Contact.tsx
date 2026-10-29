@@ -3,7 +3,7 @@ import { useCopyEmail } from '../hooks/useCopyEmail'
 import './Contact.css'
 
 export function Contact() {
-  const { label, copy } = useCopyEmail(profile.email, 'Get in touch')
+  const { label, copy } = useCopyEmail(profile.email)
 
   return (
     <section className="shell section reveal" id="contact">

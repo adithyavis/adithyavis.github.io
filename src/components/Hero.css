@@ -22,7 +22,8 @@
   .bento-intro, .bento-stat, .bento-list { grid-column: auto; }
 }
 
-/* Intro */
+/* Intro — inverted like the contact card, so the page opens and closes on
+   the same light surface. */
 
 .bento-intro {
   display: flex;
@@ -31,6 +32,9 @@
   gap: 32px;
   padding: clamp(24px, 4vw, 44px);
   min-width: 0;
+  background: var(--text);
+  border-color: var(--text);
+  color: var(--bg);
 }
 
 .hero-status {
@@ -40,9 +44,9 @@
   gap: 8px;
   padding: 7px 12px;
   border-radius: 999px;
-  border: 1px solid var(--line-strong);
+  border: 1px solid var(--text-secondary);
   font-size: 13px;
-  color: var(--text-secondary);
+  color: var(--ink-secondary);
 }
 
 .hero-status-dot {
@@ -67,7 +71,7 @@
   max-width: 52ch;
   font-size: 17px;
   line-height: 1.6;
-  color: var(--text-muted);
+  color: var(--ink-secondary);
   text-wrap: pretty;
 }
 
@@ -76,6 +80,20 @@
   flex-wrap: wrap;
   gap: 10px;
 }
+
+/* The shared buttons, flipped for the light surface. */
+.bento-intro .button {
+  border-color: var(--text-secondary);
+  color: var(--bg);
+}
+.bento-intro .button:hover { border-color: var(--bg); }
+
+.bento-intro .button--primary {
+  border-color: var(--bg);
+  background: var(--bg);
+  color: var(--text);
+}
+.bento-intro .button--primary:hover { background: #1f1f23; border-color: #1f1f23; }
 
 /* Stat tiles */
 
